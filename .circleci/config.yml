@@ -1,0 +1,89 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:16.13.1
+
+    working_directory: ~/lendis
+
+    steps: 
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v2-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v2-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+            - ~/.cache/yarn/v1
+          key: v2-dependencies-{{ checksum "package.json" }}
+        
+      # hold tight!
+      - run: yarn build
+
+      - run:
+          command: |
+            mkdir -p /tmp/lendis
+            cp -a dist/. /tmp/lendis/dist
+            cp firebase.json /tmp/lendis/
+            cp .firebaserc /tmp/lendis/
+
+      - persist_to_workspace:
+          root: /tmp/lendis
+          paths:
+            - .firebaserc
+            - firebase.json
+            - dist/*
+
+  deploy:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:16.13.1
+
+    working_directory: ~/lendis
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-firebase-tools-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-firebase-tools-
+
+      - run: sudo yarn global add firebase-tools@10.0.1 --ignore-engines
+
+      - save_cache:
+          paths:
+            - node_modules
+            - ~/.cache/yarn/v1
+          key: v1-firebase-tools-{{ checksum "package.json" }}
+
+      - attach_workspace:
+          at: /tmp/lendis
+
+      - run:
+          command: |
+            cd /tmp/lendis
+            firebase deploy --token "$FIREBASE_TOKEN" --non-interactive --only hosting --project lendis
+
+workflows:
+  version: 2
+
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
