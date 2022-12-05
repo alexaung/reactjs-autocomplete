@@ -1,0 +1,8 @@
+{
+  "development": {
+    "api_server": "https://v5.db.transport.rest"
+  },
+  "production": {
+    "api_server": "https://v5.db.transport.rest"
+  }
+}
