@@ -12,11 +12,11 @@ const colors = [
   "#C6C6C6",
   "#919191",
   "#5E5E5E",
-  "#303030",
   "#7C7C7C",
   "#AEAEAE",
   "#040404",
   "#666666",
+  "#303030",
 ];
 
 export const ProgressLine = ({ journey, leg, index }: ProgressLineProps) => {

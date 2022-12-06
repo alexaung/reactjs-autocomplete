@@ -33,7 +33,7 @@ const AutoComplete = ({
   valueChangeHandler,
   name,
 }: AutoCompleteProps) => {
-  const [activeOption, setActiveOption] = useState<Stop | null>(null);
+  
   const [activeOptionIndex, setActiveOptionIndex] = useState(0);
   const [filteredOptions, setFilteredOptions] = useState<Stop[]>([]);
   const [showOptions, setShowOptions] = useState(false);
@@ -73,33 +73,47 @@ const AutoComplete = ({
     dataChangeSubject.next(userInput);
   };
 
-  const onClick = (e: React.MouseEvent<HTMLLIElement>) => {
-    setActiveOptionIndex(0);
+  const handleSelect = (idx: number) => {
+    setActiveOptionIndex(idx);
     setFilteredOptions([]);
     setShowOptions(false);
-    setUserInput(e.currentTarget.innerText);
-
-    valueChangeHandler(filteredOptions[activeOptionIndex]);
+    setUserInput(filteredOptions[idx].name);
+    valueChangeHandler(filteredOptions[idx]);
   };
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      setActiveOptionIndex(0);
-      setShowOptions(false);
-      setUserInput(filteredOptions[activeOptionIndex].name);
-      setActiveOption(filteredOptions[activeOptionIndex]);
-    } else if (e.key === "keyup") {
-      if (activeOptionIndex === 0) {
-        return;
+  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const UP = "keyup";
+    const DOWN = "keydown";
+    const ENTER = "Enter";
+    const INITIAL_IDX = 0;
+
+    if (e.key === DOWN) {
+      e.preventDefault();
+      const idx = activeOptionIndex;
+      const nextIdx = idx !== undefined ? idx + 1 : INITIAL_IDX;
+
+      if (nextIdx < filteredOptions.length) {
+        setActiveOptionIndex(nextIdx);
+      } else {
+        setActiveOptionIndex(INITIAL_IDX);
       }
-      setActiveOptionIndex(activeOptionIndex - 1);
-    } else if (e.key === "keydown") {
-      if (activeOptionIndex === filteredOptions.length - 1) {
-        return;
+    }
+
+    if (e.key === UP) {
+      e.preventDefault();
+      const lastIdx = filteredOptions.length - 1;
+      const idx = activeOptionIndex;
+      const prevIdx = idx !== undefined ? idx - 1 : lastIdx;
+
+      if (prevIdx >= 0) {
+        setActiveOptionIndex(prevIdx);
+      } else {
+        setActiveOptionIndex(lastIdx);
       }
-      setActiveOptionIndex(activeOptionIndex + 1);
-    } else if (e.key === "Escape") {
-      setUserInput("");
+    }
+
+    if (e.key === ENTER && activeOptionIndex !== undefined) {
+      handleSelect(activeOptionIndex);
     }
   };
 
@@ -113,7 +127,7 @@ const AutoComplete = ({
               <li
                 className={`bg-gray-50 block my-1 p-2 rounded-sm hover:bg-gray-100 hover:font-bold hover:text-primary-focus hover:cursor-pointer hover:transition-all`}
                 key={option.id}
-                onClick={onClick}
+                onClick={(e)=> handleSelect(index)}
               >
                 {option.name}
               </li>

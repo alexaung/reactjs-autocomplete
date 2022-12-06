@@ -45,13 +45,14 @@ const journeySlice = createSlice({
             state.loading = true
         })
         builder.addCase(fetchJourneys.fulfilled, (state, action: PayloadAction<Respone>) => {
+            console.log(action.payload.criteria)
             state.loading = false
             state.journeys = action.payload.journeys
             state.criteria = action.payload.criteria
             state.error = ''
         })
         builder.addCase(fetchJourneys.rejected, (state, action: any) => {
-            console.log(action.error)
+            
             state.loading = false,
                 state.journeys = [],
                 state.error = action.payload.message || 'Someting went wrong'

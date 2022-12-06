@@ -48,9 +48,9 @@ export const SearchForm = () => {
   };
 
   const handleSearch = async (criteria: SearchCriteria) => {
+    console.log(criteria)
     setIsSubmitting(true)
     await dispatch(fetchJourneys(criteria));
-    // redirect to result page
     setIsSubmitting(false)
     navigate("/journey");
   };
