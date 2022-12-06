@@ -1,5 +1,6 @@
 import React from "react";
 import { routes } from "../routes/routes"
+import { useNavigate } from "react-router-dom";
 
 export const NavBar = () => {
   return (
@@ -22,7 +23,7 @@ export const NavBar = () => {
         </button>
       </div>
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">lendis</a>
+        <a className="btn btn-ghost normal-case text-xl" href="/home">lendis</a>
       </div>
       <div className="flex-none">
         <button className="btn btn-square btn-ghost">
