@@ -1,3 +1,5 @@
+## Lendis - Software Engineer Assignment
+
 This is a [Reactjs](https://reactjs.org//) project [tailwindcss](https://tailwindcss.com/) with [`vitejs`](https://vitejs.dev/).
 
 ## Getting Started
@@ -12,11 +14,17 @@ yarn dev
 
 Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
 
-The user able to speicy the name of the city, or the station she want to start her journey, along with the day and time and the list of journeys show with all availabe modes of transportation.
+The user is able to specify the name of the city, or the station she wants to start her journey on, along with the day and time in the Search Form at home page and the search results of journeys with all available modes of transportation will shown at the journey page.
 
-Created an AutoComplete reusable component to suggest Station/ stop / address calling [Locations API routes](https://v5.db.transport.rest/locations?poi=true&addresses=true&query=A) and using in Search Form.
+## Control Component
 
-After form submit, search result will show at [/jouryney] route.
+Created an AutoComplete reusable component to suggest Station/ stop / address. Used RxJS debounce operator to 300 milliseconds delay calls to the search method. And to ensure a minimum input 3 letter length with rxjs filter. This can be easily changed in the AutoCompete component.
+
+## API routes
+
+[Locations API route](https://v5.db.transport.rest/locations?poi=true&addresses=true&query=A) 
+
+[Journeys API rotue](https://v5.db.transport.rest/journeys?from=8011160&to=8002549&departure=1670313600)
 
 ## Technologies Stack
 
@@ -30,8 +38,7 @@ Using [Redux Toolkit](https://redux-toolkit.js.org/) to managing and centralizin
 
 Using [Tailwind CSS](https://tailwindcss.com/) with PostCSS as your preprocessor
 
-- Your builds will be faster
-- No quirks or workarounds
+- Tailwind CSS makes it quicker to write and maintain the code of your application. By using this utility-first framework, you don't have to write custom CSS to style your application. Instead, you can use utility classes to control the padding, margin, color, font, shadow, and more of your application.
 
 ## Deploy on Firebase Hosting
 
@@ -49,10 +56,12 @@ Using [Tailwind CSS](https://tailwindcss.com/) with PostCSS as your preprocessor
 
 [CircleCI](https://circleci.com/) integrates seamlessly with [Bitbucket](https://alexaung@bitbucket.org/alexaung/lendis.git) to make your development workflow more efficient. 
 
-You can configure the integraiton file, [.circleci/config.yml](https://circleci.com/docs/configuration-reference/)
+You can configure the integration file, [.circleci/config.yml](https://circleci.com/docs/configuration-reference/) in the project root folder. 
+
+Everytime you commit, CircleCI automatically builds the project and deploy the latest version to Firebase Hosting.
 
 ## Disclaimer
 
-This project is for Lendis's Software Engineer Assignment only. All photos using in this project are downloaded form [Pexels](https://www.pexels.com/license/) and used for free.
+This project is for Lendis's Software Engineer Assignment only. All photos used in this project are downloaded form [Pexels](https://www.pexels.com/license/) and used for free.
 
 
