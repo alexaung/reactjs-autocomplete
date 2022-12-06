@@ -18,7 +18,7 @@ export const JourneyItem = ({ journey, index }: JourneyProps) => {
   };
 
   return (
-    <div className="flex items-center justify-center mx-5 my-5">
+    <div className="flex items-center justify-center mx-5 my-3">
       <div className="card md:w-3/4 bg-base-100 shadow-xl">
         <div className="card-body">
           <div className="flex flex-row">

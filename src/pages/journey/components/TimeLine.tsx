@@ -7,23 +7,34 @@ type TImeLineProps = {
 };
 export const TimeLine = ({ leg }: TImeLineProps) => {
   return (
-    <ol key={leg.tripId} className="relative border-l border-gray-200 dark:border-gray-700">
+    <ol
+      key={leg.tripId}
+      className="relative border-l border-gray-200 dark:border-gray-700"
+    >
       {leg.line ? (
         <>
           <li key={leg.origin.id} className="mb-10 ml-6">
             <span className="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+              
               <svg
-                aria-hidden="true"
-                className="w-3 h-3 text-blue-600 dark:text-blue-400"
-                fill="currentColor"
+                className="w-6 h-6 text-blue-600 dark:text-blue-400"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path
-                  fillRule="evenodd"
-                  d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                  clipRule="evenodd"
-                ></path>
+                <defs>
+                  <filter color-interpolation-filters="auto" id="a">
+                    <feColorMatrix
+                      in="SourceGraphic"
+                      values="0 0 0 0 0.074510 0 0 0 0 0.094118 0 0 0 0 0.129412 0 0 0 1.000000 0"
+                    />
+                  </filter>
+                </defs>
+                <g filter="url(#a)" fill="none" fill-rule="evenodd">
+                  <path
+                    d="M10 3.5c3.594 0 6.5 2.906 6.5 6.5s-2.906 6.5-6.5 6.5A6.495 6.495 0 0 1 3.5 10c0-3.594 2.906-6.5 6.5-6.5zm0 2c-2.469 0-4.5 2.031-4.5 4.5s2.031 4.5 4.5 4.5 4.5-2.031 4.5-4.5-2.031-4.5-4.5-4.5zm0 6.5c1.125 0 2-.875 2-2s-.875-2-2-2-2 .875-2 2 .875 2 2 2z"
+                    fill="#131821"
+                  />
+                </g>
               </svg>
             </span>
             <time className="absolute -left-20 mb-1 text-sm font-semibold text-gray-900 dark:text-white">
@@ -46,17 +57,24 @@ export const TimeLine = ({ leg }: TImeLineProps) => {
           <li key={leg.destination.id} className="mb-10 ml-6">
             <span className="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
               <svg
-                aria-hidden="true"
-                className="w-3 h-3 text-blue-600 dark:text-blue-400"
-                fill="currentColor"
+                className="w-6 h-6 text-blue-600 dark:text-blue-400"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path
-                  fillRule="evenodd"
-                  d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                  clipRule="evenodd"
-                ></path>
+                <defs>
+                  <filter color-interpolation-filters="auto" id="a">
+                    <feColorMatrix
+                      in="SourceGraphic"
+                      values="0 0 0 0 0.074510 0 0 0 0 0.094118 0 0 0 0 0.129412 0 0 0 1.000000 0"
+                    />
+                  </filter>
+                </defs>
+                <g filter="url(#a)" fill="none" fill-rule="evenodd">
+                  <path
+                    d="M10 2c3.469 0 6 2.594 6 6 0 1.375-.594 2.906-1.75 4.563l-3.438 5A.942.942 0 0 1 10 18a.942.942 0 0 1-.813-.438l-3.437-5C4.594 10.876 4 9.376 4 8c0-3.313 2.438-6 6-6zm0 4c-1.094 0-2 .906-2 2 0 1.094.906 2 2 2 1.094 0 2-.906 2-2 0-1.094-.906-2-2-2z"
+                    fill="#131821"
+                  />
+                </g>
               </svg>
             </span>
             <time className="absolute -left-20 mb-1 text-sm font-semibold text-gray-900 dark:text-white">

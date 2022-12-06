@@ -2,6 +2,7 @@ import React from "react";
 import { useAppSelector } from "../../store/hooks";
 import { JourneyItem } from "./components/JourneyItem";
 import { Error } from "../../components/Error";
+import { JourneyHeader } from "./components/JourneyHeader";
 
 export const JourneyPage = () => {
   const journey = useAppSelector((state) => state.journey);
@@ -14,6 +15,7 @@ export const JourneyPage = () => {
       ) : null}
       {!journey.loading && journey.journeys.length ? (
         <>
+          <JourneyHeader />
           {journey.journeys.map((journey, index) => (
             <JourneyItem
               key={`journey-${index}`}
