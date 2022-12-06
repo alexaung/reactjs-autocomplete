@@ -12,16 +12,6 @@ type JourneyProps = {
 export const JourneyItem = ({ journey, index }: JourneyProps) => {
   //console.log(index)
   const [show, setShow] = useState(false);
-  const colors = [
-    "#C6C6C6",
-    "#919191",
-    "#5E5E5E",
-    "#303030",
-    "#7C7C7C",
-    "#AEAEAE",
-    "#040404",
-    "#666666",
-  ];
 
   const showDetial = () => {
     console.log(show);
@@ -42,13 +32,12 @@ export const JourneyItem = ({ journey, index }: JourneyProps) => {
               </h3>
               <div className="w-full flex flex-row justify-between">
                 {journey.legs.map((leg, index) => (
-                  <div key={index}>
-                    <ProgressLine
-                      journey={journey}
-                      leg={leg}
-                      color={colors[index]}
-                    />
-                  </div>
+                  <ProgressLine
+                    key={`progress-${index}`}
+                    journey={journey}
+                    leg={leg}
+                    index={index}
+                  />
                 ))}
               </div>
               <div className="w-full flex flex-row justify-between">
@@ -81,16 +70,13 @@ export const JourneyItem = ({ journey, index }: JourneyProps) => {
               </div>
             </div>
           </div>
-
           <>
             {show ? (
               <>
                 <div className="divider"></div>
                 <div className="px-20 lg:order-3 lg:mt-0">
                   {journey.legs.map((leg, index) => (
-                    <div key={index}>
-                      <TimeLine leg={leg} />
-                    </div>
+                    <TimeLine key={`timeline-${index}`} leg={leg} />
                   ))}
                 </div>
               </>

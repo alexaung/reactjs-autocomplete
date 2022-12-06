@@ -1,22 +1,25 @@
 import React from "react";
 import { useAppSelector } from "../../store/hooks";
 import { JourneyItem } from "./components/JourneyItem";
+import { Error } from "../../components/Error";
 
-export const TripPage = () => {
+export const JourneyPage = () => {
   const journey = useAppSelector((state) => state.journey);
-
+  console.log("Journey");
   return (
     <>
       {journey.loading && <div>Loading...</div>}
       {!journey.loading && journey.error ? (
-        <div>Error: {journey.error}</div>
+        <Error message={journey.error} />
       ) : null}
       {!journey.loading && journey.journeys.length ? (
         <>
           {journey.journeys.map((journey, index) => (
-            <div key={index}>
-            <JourneyItem journey={journey} index={index} />
-            </div>
+            <JourneyItem
+              key={`journey-${index}`}
+              journey={journey}
+              index={index}
+            />
           ))}
         </>
       ) : null}

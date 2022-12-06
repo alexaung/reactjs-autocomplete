@@ -8,9 +8,9 @@ import constants from "../constants";
 type AutoCompleteProps = {
   style: string;
   placeholder: string;
-  value: string;
+  value: Stop | null;
   name: string;
-  valueChangeHandler: (value: string) => void;
+  valueChangeHandler: (value: Stop) => void;
 };
 
 const getApiUrl = (value: string) => {
@@ -37,7 +37,7 @@ const AutoComplete = ({
   const [activeOptionIndex, setActiveOptionIndex] = useState(0);
   const [filteredOptions, setFilteredOptions] = useState<Stop[]>([]);
   const [showOptions, setShowOptions] = useState(false);
-  const [userInput, setUserInput] = useState(value);
+  const [userInput, setUserInput] = useState(value ? value.name : '');
   const [dataChangeSubject, setDataChangeSubject] = useState(
     new Subject<string>()
   );
@@ -79,7 +79,7 @@ const AutoComplete = ({
     setShowOptions(false);
     setUserInput(e.currentTarget.innerText);
 
-    valueChangeHandler(filteredOptions[activeOptionIndex].id);
+    valueChangeHandler(filteredOptions[activeOptionIndex]);
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

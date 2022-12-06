@@ -1,5 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-
+import { configureStore } from '@reduxjs/toolkit'
 import journeyReducer from '../reducers/journeySlice'
 
 // const logger = reduxLogger.createLogger()

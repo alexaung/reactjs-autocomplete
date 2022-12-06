@@ -1,9 +1,7 @@
 import { SearchForm } from "../../components/SearchForm";
-
-
+import station from "./../../assets/station1.jpg";
 
 export const HomePage = () => {
-  
   return (
     <>
       <section className="relative block h-[50vh]">
@@ -29,10 +27,7 @@ export const HomePage = () => {
       <section className="bg-base-200">
         <div className="hero py-10">
           <div className="hero-content flex-col lg:flex-row-reverse">
-            <img
-              src="../src/assets/station1.jpg"
-              className="max-w-lg rounded-lg shadow-2xl"
-            />
+            <img src={station} className="max-w-lg rounded-lg shadow-2xl" />
             <div>
               <h1 className="text-5xl font-bold">Autumn Special</h1>
               <p className="py-6">
@@ -46,8 +41,6 @@ export const HomePage = () => {
           </div>
         </div>
       </section>
-
-      
     </>
   );
 };

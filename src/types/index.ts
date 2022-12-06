@@ -4,8 +4,8 @@ export interface Stop {
 }
 
 export interface SearchCriteria {
-  from: string;
-  to: string;
+  from: Stop | null;
+  to: Stop | null;
   departure: Date;
 }
 

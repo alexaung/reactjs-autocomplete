@@ -5,10 +5,21 @@ import { Journey, Leg } from "../../../types";
 type ProgressLineProps = {
   journey: Journey;
   leg: Leg;
-  color: string;
+  index: number;
 };
 
-export const ProgressLine = ({ journey, leg, color }: ProgressLineProps) => {
+const colors = [
+  "#C6C6C6",
+  "#919191",
+  "#5E5E5E",
+  "#303030",
+  "#7C7C7C",
+  "#AEAEAE",
+  "#040404",
+  "#666666",
+];
+
+export const ProgressLine = ({ journey, leg, index }: ProgressLineProps) => {
   const getTotalDuration = (journey: Journey) => {
     var duration = Moment.duration(
       Moment(journey.legs[journey.legs.length - 1].plannedArrival).diff(
@@ -32,11 +43,11 @@ export const ProgressLine = ({ journey, leg, color }: ProgressLineProps) => {
   return (
     <>
       {leg.line ? (
-        <div key={leg.tripId}
+        <div 
           className="h-10 rounded-md flex justify-center items-center"
-          style={{ width: `${percentage}%`, backgroundColor: `${color}` }}
+          style={{ width: `${percentage}%`, backgroundColor: `${colors[index]}` }}
         >
-          <div className="text-base font-bold">{leg.line.name}</div>
+          <div className="text-base font-bold"><span className="whitespace-nowrap">{leg.line.name}</span></div>
         </div>
       ) : (
         <div className="h-10 rounded-sm flex justify-center items-center">

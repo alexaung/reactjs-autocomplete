@@ -24,9 +24,16 @@ type Respone = {
 }
 
 // generates pending, fulfilled and rejected action types
-export const fetchJourneys = createAsyncThunk("journey/fetchJourneys", async (criteria: SearchCriteria) => {
-    const response = await axios.get(`${constants.api_server}/journeys?from=${criteria.from}&to=${criteria.to}&departure=${Moment(criteria.departure).unix()}`);
+export const fetchJourneys = createAsyncThunk("journey/fetchJourneys", async (criteria: SearchCriteria, { rejectWithValue }) => {
+    try {
+        const response = await axios.get(`${constants.api_server}/journeys?from=${criteria.from?.id}&to=${criteria.to?.id}&departure=${Moment(criteria.departure).unix()}`);
+    
     return {journeys: response.data.journeys, criteria:criteria }
+        
+    } catch (error: any) {
+        return rejectWithValue(error.response.data)
+    }
+    
 });
 
 const journeySlice = createSlice({
@@ -34,20 +41,20 @@ const journeySlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: builder => {
-        builder.addCase(fetchJourneys.pending, (state, action) => {
+        builder.addCase(fetchJourneys.pending, (state) => {
             state.loading = true
         })
         builder.addCase(fetchJourneys.fulfilled, (state, action: PayloadAction<Respone>) => {
-            console.log(action.payload)
             state.loading = false
             state.journeys = action.payload.journeys
             state.criteria = action.payload.criteria
             state.error = ''
         })
-        builder.addCase(fetchJourneys.rejected, (state, action) => {
+        builder.addCase(fetchJourneys.rejected, (state, action: any) => {
+            console.log(action.error)
             state.loading = false,
                 state.journeys = [],
-                state.error = action.error.message || 'Someting went wrong'
+                state.error = action.payload.message || 'Someting went wrong'
         })
     }
 });

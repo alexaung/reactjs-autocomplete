@@ -1,5 +1,5 @@
 import { HomePage } from "../pages/home/HomePage";
-import { TripPage } from "../pages/trip/TripPage";
+import { JourneyPage } from "../pages/journey/JourneyPage";
 import { SignInPage } from "../pages/signin/SignInPage";
 import {SignUpPage } from "../pages/signup/SignUpPage";
 
@@ -19,9 +19,9 @@ export const routes = [
   },
   {
     icon: UserCircleIcon,
-    name: "trips",
-    path: "/trips",
-    element: <TripPage />,
+    name: "journey",
+    path: "/journey",
+    element: <JourneyPage />,
   },
   {
     icon: ArrowRightOnRectangleIcon,
