@@ -10,7 +10,6 @@ type JourneyProps = {
 };
 
 export const JourneyItem = ({ journey, index }: JourneyProps) => {
-  
   const [show, setShow] = useState(false);
 
   const showDetial = () => {
@@ -19,10 +18,10 @@ export const JourneyItem = ({ journey, index }: JourneyProps) => {
 
   return (
     <div className="flex items-center justify-center mx-5 my-3">
-      <div className="card md:w-3/4 bg-base-100 shadow-xl">
+      <div className="card w-full md:w-3/4 bg-base-100 shadow-xl">
         <div className="card-body">
-          <div className="flex flex-row">
-            <div className="w-3/4 pr-5">
+          <div className="flex flex-col md:flex-row">
+            <div className="w-full md:w-3/4 pr-5">
               <h3 className="">
                 {Moment(journey.legs[0].plannedDeparture).format("HH:mm")} -
                 {Moment(
@@ -45,19 +44,8 @@ export const JourneyItem = ({ journey, index }: JourneyProps) => {
                   {journey.legs[journey.legs.length - 1].destination.name}
                 </div>
               </div>
-              <div>
-                <div className="flex items-center justify-center">
-                  <a className="link" onClick={showDetial}>
-                    {show ? (
-                      <span>Hide details</span>
-                    ) : (
-                      <span>Show details</span>
-                    )}
-                  </a>
-                </div>
-              </div>
             </div>
-            <div className="w-1/4 flex justify-center items-center border-l">
+            <div className="w-full md:w-1/4 flex justify-end md:justify-center items-center pt-2 mt-2 border-t md:border-l">
               <div>
                 {journey.price ? (
                   <h3 className="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
@@ -67,6 +55,13 @@ export const JourneyItem = ({ journey, index }: JourneyProps) => {
                   <></>
                 )}
               </div>
+            </div>
+          </div>
+          <div>
+            <div className="flex items-center justify-center">
+              <a className="link" onClick={showDetial}>
+                {show ? <span>Hide details</span> : <span>Show details</span>}
+              </a>
             </div>
           </div>
           <>
