@@ -73,7 +73,7 @@ jobs:
       - run:
           command: |
             cd /tmp/lendis
-            firebase deploy --token "$FIREBASE_TOKEN" --non-interactive --only hosting --project lendis
+            firebase deploy --token "$FIREBASE_TOKEN" --non-interactive --only hosting --project lendis-b4262
 
 workflows:
   version: 2
