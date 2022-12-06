@@ -9,7 +9,7 @@ const getApiUrl = (value: string) => {
 };
 
 const transformResponse = ({ response }: AjaxResponse<any>) : Stop[] => {
-    console.log("GetLocations")
+    
     return response.map( (item: { [x: string]: any; }) : Stop => ({
         id: item["id"],
         name: item["name"]
@@ -19,7 +19,7 @@ const transformResponse = ({ response }: AjaxResponse<any>) : Stop[] => {
 export const getLocations = (
     subject: BehaviorSubject<string>
     ): Observable<Stop[]> => {
-    console.log("GetLocations")
+    
     return subject.pipe(
         debounceTime(500),
         //filter(v => v.length > 2),

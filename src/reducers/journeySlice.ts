@@ -45,7 +45,7 @@ const journeySlice = createSlice({
             state.loading = true
         })
         builder.addCase(fetchJourneys.fulfilled, (state, action: PayloadAction<Respone>) => {
-            console.log(action.payload.criteria)
+            
             state.loading = false
             state.journeys = action.payload.journeys
             state.criteria = action.payload.criteria

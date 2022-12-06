@@ -5,7 +5,7 @@ import { Error } from "../../components/Error";
 
 export const JourneyPage = () => {
   const journey = useAppSelector((state) => state.journey);
-  console.log("Journey");
+  
   return (
     <>
       {journey.loading && <div>Loading...</div>}

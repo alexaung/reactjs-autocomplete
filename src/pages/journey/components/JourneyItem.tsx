@@ -10,11 +10,10 @@ type JourneyProps = {
 };
 
 export const JourneyItem = ({ journey, index }: JourneyProps) => {
-  //console.log(index)
+  
   const [show, setShow] = useState(false);
 
   const showDetial = () => {
-    console.log(show);
     setShow(!show);
   };
 

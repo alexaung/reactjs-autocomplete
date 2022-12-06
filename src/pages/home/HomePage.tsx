@@ -8,7 +8,7 @@ export const HomePage = () => {
         <div className="bg-profile-background absolute top-0 h-full w-full bg-[url('../src/assets/station.jpg')] bg-cover bg-center" />
         <div className="absolute top-0 h-full w-full bg-black/75 bg-cover bg-center" />
       </section>
-      <section className="relative bg-base-200 py-1 px-20">
+      <section className="relative bg-base-200 py-1 px-5">
         <div className="container mx-auto md:w-3/5 lg:w-3/4">
           <div className="relative mb-6 -mt-56 break-words rounded-3xl bg-white shadow-xl shadow-gray-500/5">
             <div className="px-6">

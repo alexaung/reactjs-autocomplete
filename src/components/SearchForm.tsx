@@ -9,23 +9,9 @@ import { useNavigate } from "react-router-dom";
 import { Stop } from "../types";
 import { useState } from "react";
 
-const isObjectEmpty = (message: string) => {
-  return Yup.mixed().test("isObjectEmpty", message, function (value) {
-    const { createError } = this;
-
-    if (value === null) {
-      return createError({ message: message ?? "Field is required." });
-    }
-
-    return true;
-  });
-};
-
-Yup.addMethod(Yup.mixed, "isObjectEmpty", isObjectEmpty);
-
 const schema = Yup.object({
-  //from: Yup.mixed().isObjectEmpty("To is required."),
-  //to: Yup.mixed().isObjectEmpty("To is required."),
+  from: Yup.object().nullable().required('From is required.'),
+  to: Yup.object().nullable().required('To is required.'),
   departure: Yup.date().required("Date is required"),
 });
 
@@ -48,10 +34,10 @@ export const SearchForm = () => {
   };
 
   const handleSearch = async (criteria: SearchCriteria) => {
-    console.log(criteria)
-    setIsSubmitting(true)
+    
+    setIsSubmitting(true);
     await dispatch(fetchJourneys(criteria));
-    setIsSubmitting(false)
+    setIsSubmitting(false);
     navigate("/journey");
   };
 
@@ -142,12 +128,12 @@ export const SearchForm = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`btn btn-primary text-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ${isSubmitting ? "loading" : ""}`}
+              className={`btn btn-primary text-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ${
+                isSubmitting ? "loading" : ""
+              }`}
             >
               {isSubmitting ? "Processing..." : "Search"}
             </button>
-
-            
           </div>
         </Form>
       )}
