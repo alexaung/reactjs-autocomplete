@@ -1,6 +1,6 @@
 ## Lendis - Software Engineer Assignment
 
-This is a [Reactjs](https://reactjs.org//) project [tailwindcss](https://tailwindcss.com/) with [`vitejs`](https://vitejs.dev/).
+This is a [`vitejs`](https://vitejs.dev/) + [Reactjs](https://reactjs.org//) [Typescript] project with [tailwindcss](https://tailwindcss.com/).
 
 ## Getting Started
 
@@ -18,7 +18,7 @@ The user is able to specify the name of the city, or the station she wants to st
 
 ## Reusable Components
 
-# AutoComplete Componet
+### AutoComplete Componet
 
 - Autocomplete provides a superior user experience to your app’s visitors. It also helps to avoid redundant spelling errors while searching.
 
