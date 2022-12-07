@@ -16,9 +16,15 @@ Open [http://localhost:5173](http://localhost:5173) with your browser to see the
 
 The user is able to specify the name of the city, or the station she wants to start her journey on, along with the day and time in the Search Form at home page and the search results of journeys with all available modes of transportation will shown at the journey page.
 
-## Control Component
+## Reusable Components
 
-Created an AutoComplete reusable component to suggest Station/ stop / address. Used RxJS debounce operator to 300 milliseconds delay calls to the search method. And to ensure a minimum input 3 letter length with rxjs filter. This can be easily changed in the AutoCompete component.
+# AutoComplete Componet
+
+- Autocomplete provides a superior user experience to your app’s visitors. It also helps to avoid redundant spelling errors while searching.
+
+- Autocomplete is essencially a text input that offers suggestions that user can pick from and to of Station /stop /address.
+
+- Used RxJS debounce operator to 300 milliseconds delay calls to the search method. And to ensure a minimum input 3 letter length with rxjs filter. This can be easily changed in the AutoCompete component.
 
 ## API routes
 
@@ -28,15 +34,19 @@ Created an AutoComplete reusable component to suggest Station/ stop / address. U
 
 ## Technologies Stack
 
-Using [Vite](https://vitejs.dev/guide/) to create the TypeScript React application
+[Vite](https://vitejs.dev/guide/) is a next-generation, front-end tool that focuses on speed and performace.
+
+- A development server that provides rich feature enhancements over native ES moudles: fast Hot Moudle Replacement (HMR), pre-bundling, support for typescript, jsx, and dynamic import.
+
+- A build command that bundles your code with Rollup, pre-configured to output optimized static assets for production.
 
 - Vite pre-bundles these dependencies using esbuild, which is 10-100x faster than JavaScript-based bundlers. Pre-bundling ensures that each     dependency maps to only one HTTP request, avoiding HTTP overhead and network congestion. As dependencies do not change, they can also be cached and we can skip pre-bundling
 
-Using [Redux Toolkit](https://redux-toolkit.js.org/) to managing and centralizing application state
+[Redux Toolkit](https://redux-toolkit.js.org/) to managing and centralizing application state
 
 - Redux Toolkit makes it easier to write good Redux applications and speeds up development, by baking in our recommended best practices, providing good default behaviors, catching mistakes, and allowing you to write simpler code. 
 
-Using [Tailwind CSS](https://tailwindcss.com/) with PostCSS as your preprocessor
+[Tailwind CSS](https://tailwindcss.com/) with PostCSS as your preprocessor
 
 - Tailwind CSS makes it quicker to write and maintain the code of your application. By using this utility-first framework, you don't have to write custom CSS to style your application. Instead, you can use utility classes to control the padding, margin, color, font, shadow, and more of your application.
 
