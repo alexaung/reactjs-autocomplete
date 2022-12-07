@@ -44,13 +44,13 @@ export const ProgressLine = ({ journey, leg, index }: ProgressLineProps) => {
     <>
       {leg.line ? (
         <div 
-          className="h-10 rounded-md flex justify-center items-center"
+          className="h-8 rounded-md flex justify-center items-center"
           style={{ width: `${percentage}%`, backgroundColor: `${colors[index]}` }}
         >
-          <div className="text-base font-bold"><span className="whitespace-nowrap">{leg.line.name}</span></div>
+          <div className="text-xs md:text-base font-bold"><span className="whitespace-nowrap">{leg.line.name}</span></div>
         </div>
       ) : (
-        <div className="h-10 rounded-sm flex justify-center items-center">
+        <div className="h-8 rounded-sm flex justify-center items-center">
           {leg.walking ? (
             <svg
               className="w-6 h-6 text-blue-600 dark:text-blue-400"

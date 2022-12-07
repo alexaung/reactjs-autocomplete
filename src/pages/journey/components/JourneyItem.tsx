@@ -38,14 +38,14 @@ export const JourneyItem = ({ journey, index }: JourneyProps) => {
                   />
                 ))}
               </div>
-              <div className="w-full flex flex-row justify-between">
+              <div className="w-full flex flex-row justify-between pt-2">
                 <div>{journey.legs[0].origin.name}</div>
                 <div>
                   {journey.legs[journey.legs.length - 1].destination.name}
                 </div>
               </div>
             </div>
-            <div className="w-full md:w-1/4 flex justify-end md:justify-center items-center pt-2 mt-2 md:border-l">
+            <div className="w-full md:w-1/4 flex justify-end md:justify-center items-center pt-2 mt-2 border-t lg:border-t-0 md:border-l">
               <div>
                 {journey.price ? (
                   <h3 className="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">

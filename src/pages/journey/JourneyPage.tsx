@@ -6,7 +6,7 @@ import { JourneyHeader } from "./components/JourneyHeader";
 
 export const JourneyPage = () => {
   const journey = useAppSelector((state) => state.journey);
-  
+
   return (
     <>
       {journey.loading && <div>Loading...</div>}
@@ -24,7 +24,15 @@ export const JourneyPage = () => {
             />
           ))}
         </>
-      ) : null}
+      ) : (
+        <>
+          {!journey.error && journey.journeys.length === 0 ? (
+            <Error message="No Record Found" />
+          ) : (
+            <></>
+          )}
+        </>
+      )}
     </>
   );
 };
