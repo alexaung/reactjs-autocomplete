@@ -20,14 +20,6 @@ npm run dev
 yarn dev
 ```
 
-Second, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
 Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
 
 The user is able to specify the name of the city, or the station she wants to start her journey on, along with the day and time in the Search Form at home page and the search results of journeys with all available modes of transportation will shown at the journey page.
