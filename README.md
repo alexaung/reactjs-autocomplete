@@ -4,7 +4,23 @@ This is a [`vitejs`](https://vitejs.dev/) + [Reactjs](https://reactjs.org//) [Ty
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+Second, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Second, run the development server:
 
 ```bash
 npm run dev
