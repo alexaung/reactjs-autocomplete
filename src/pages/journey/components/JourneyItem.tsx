@@ -28,7 +28,7 @@ export const JourneyItem = ({ journey, index }: JourneyProps) => {
                   journey.legs[journey.legs.length - 1].plannedArrival
                 ).format("HH:mm")}
               </h3>
-              <div className="w-full flex flex-row justify-between">
+              <div className="w-full flex flex-wrap justify-between">
                 {journey.legs.map((leg, index) => (
                   <ProgressLine
                     key={`progress-${index}`}

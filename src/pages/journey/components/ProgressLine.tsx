@@ -1,6 +1,7 @@
 import React from "react";
 import Moment from "moment";
 import { Journey, Leg } from "../../../types";
+import { ResultType } from "@remix-run/router/dist/utils";
 
 type ProgressLineProps = {
   journey: Journey;
@@ -20,13 +21,13 @@ const colors = [
 ];
 
 export const ProgressLine = ({ journey, leg, index }: ProgressLineProps) => {
+  
   const getTotalDuration = (journey: Journey) => {
-    var duration = Moment.duration(
-      Moment(journey.legs[journey.legs.length - 1].plannedArrival).diff(
-        Moment(journey.legs[0].plannedDeparture)
-      )
-    );
-    return duration.asHours();
+    var duration : number = 0;
+    journey.legs.forEach((leg)=> {
+      duration = duration + getDuration(leg);
+    });
+    return duration;
   };
 
   const getDuration = (leg: Leg) => {
@@ -38,16 +39,16 @@ export const ProgressLine = ({ journey, leg, index }: ProgressLineProps) => {
 
   const totalDuration = getTotalDuration(journey);
   const duraton = getDuration(leg);
-  const percentage = (duraton * 100) / totalDuration;
+  const percentage = ((duraton) * 100) / totalDuration;
 
   return (
     <>
       {leg.line ? (
         <div 
-          className="h-8 rounded-md flex justify-center items-center"
-          style={{ width: `${percentage}%`, backgroundColor: `${colors[index]}` }}
+          className="h-8 rounded-md mb-1 flex justify-center items-center"
+          style={{ width: `${percentage -0.1}%`, backgroundColor: `${colors[index]}` }}
         >
-          <div className="text-xs md:text-base font-bold"><span className="whitespace-nowrap">{leg.line.name}</span></div>
+          <div className="text-xs  md:text-base font-bold"><span className="whitespace-nowrap">{leg.line.name}</span></div>
         </div>
       ) : (
         <div className="h-8 rounded-sm flex justify-center items-center">

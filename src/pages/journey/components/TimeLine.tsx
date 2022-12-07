@@ -22,14 +22,14 @@ export const TimeLine = ({ leg }: TImeLineProps) => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <defs>
-                  <filter color-interpolation-filters="auto" id="a">
+                  <filter colorInterpolationFilters="auto" id="a">
                     <feColorMatrix
                       in="SourceGraphic"
                       values="0 0 0 0 0.074510 0 0 0 0 0.094118 0 0 0 0 0.129412 0 0 0 1.000000 0"
                     />
                   </filter>
                 </defs>
-                <g filter="url(#a)" fill="none" fill-rule="evenodd">
+                <g filter="url(#a)" fill="none" fillRule="evenodd">
                   <path
                     d="M10 3.5c3.594 0 6.5 2.906 6.5 6.5s-2.906 6.5-6.5 6.5A6.495 6.495 0 0 1 3.5 10c0-3.594 2.906-6.5 6.5-6.5zm0 2c-2.469 0-4.5 2.031-4.5 4.5s2.031 4.5 4.5 4.5 4.5-2.031 4.5-4.5-2.031-4.5-4.5-4.5zm0 6.5c1.125 0 2-.875 2-2s-.875-2-2-2-2 .875-2 2 .875 2 2 2z"
                     fill="#131821"
@@ -62,14 +62,14 @@ export const TimeLine = ({ leg }: TImeLineProps) => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <defs>
-                  <filter color-interpolation-filters="auto" id="a">
+                  <filter colorInterpolationFilters="auto" id="a">
                     <feColorMatrix
                       in="SourceGraphic"
                       values="0 0 0 0 0.074510 0 0 0 0 0.094118 0 0 0 0 0.129412 0 0 0 1.000000 0"
                     />
                   </filter>
                 </defs>
-                <g filter="url(#a)" fill="none" fill-rule="evenodd">
+                <g filter="url(#a)" fill="none" fillRule="evenodd">
                   <path
                     d="M10 2c3.469 0 6 2.594 6 6 0 1.375-.594 2.906-1.75 4.563l-3.438 5A.942.942 0 0 1 10 18a.942.942 0 0 1-.813-.438l-3.437-5C4.594 10.876 4 9.376 4 8c0-3.313 2.438-6 6-6zm0 4c-1.094 0-2 .906-2 2 0 1.094.906 2 2 2 1.094 0 2-.906 2-2 0-1.094-.906-2-2-2z"
                     fill="#131821"
