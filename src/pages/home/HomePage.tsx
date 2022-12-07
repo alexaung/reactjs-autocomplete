@@ -25,21 +25,6 @@ export const HomePage = () => {
         </div>
       </section>
       <section className="bg-base-200">
-        {/* <div className="hero py-10">
-          <div className="hero-content flex-col lg:flex-row-reverse">
-            <img src={station} className="max-w-lg rounded-lg shadow-2xl" />
-            <div>
-              <h1 className="text-5xl font-bold">Autumn Special</h1>
-              <p className="py-6">
-                For a short time only: <strong>get a 10% discount</strong> on{" "}
-                <strong>selected German Rail passes</strong>
-              </p>
-              <button className="btn btn-primary text-black hover:text-white">
-                More
-              </button>
-            </div>
-          </div>
-        </div> */}
         <div className="hero bg-base-200">
           <div className="flex-col hero-content lg:flex-row-reverse my-10">
             <img src={station} className="md:max-w-sm rounded-lg shadow-2xl" />
