@@ -23,7 +23,7 @@ export const JourneyItem = ({ journey, index }: JourneyProps) => {
           <div className="flex flex-col md:flex-row">
             <div className="w-full md:w-3/4 md:pr-5">
               <h3 className="font-semibold">
-                {Moment(journey.legs[0].plannedDeparture).format("HH:mm")} -
+                {Moment(journey.legs[0].plannedDeparture).format("HH:mm")} -{" "}
                 {Moment(
                   journey.legs[journey.legs.length - 1].plannedArrival
                 ).format("HH:mm")}

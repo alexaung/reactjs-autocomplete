@@ -31,10 +31,14 @@ export const ProgressLine = ({ journey, leg, index }: ProgressLineProps) => {
   };
 
   const getDuration = (leg: Leg) => {
+    if(leg.walking){
+      return 0.2
+    } else {
     var duration = Moment.duration(
       Moment(leg.plannedArrival).diff(Moment(leg.plannedDeparture))
     );
     return duration.asHours();
+    }
   };
 
   const totalDuration = getTotalDuration(journey);
@@ -46,12 +50,12 @@ export const ProgressLine = ({ journey, leg, index }: ProgressLineProps) => {
       {leg.line ? (
         <div 
           className="h-8 rounded-md mb-1 flex justify-center items-center"
-          style={{ width: `${percentage -0.1}%`, backgroundColor: `${colors[index]}` }}
+          style={{ width: `${percentage -0.2}%`, backgroundColor: `${colors[index]}` }}
         >
           <div className="text-xs  md:text-base font-bold"><span className="whitespace-nowrap">{leg.line.name}</span></div>
         </div>
       ) : (
-        <div className="h-8 rounded-sm flex justify-center items-center">
+        <div className="h-8 rounded-sm flex justify-center items-center" style={{ width: `${percentage -0.1}%` }}>
           {leg.walking ? (
             <svg
               className="w-6 h-6 text-blue-600 dark:text-blue-400"
