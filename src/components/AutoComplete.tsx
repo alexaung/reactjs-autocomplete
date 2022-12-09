@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Subject, Observable } from "rxjs";
 import { Stop } from "../types";
 
-type AutoCompleteProps = {
+type AutoCompleteProps<T> = {
   style: string;
   placeholder: string;
-  value: Stop | null;
+  value: T | null;
   name: string;
-  valueChangeHandler: (value: Stop) => void;
-  getSuggestions: <S>(subject: Subject<string>) => Observable<Stop[]>;
-  renderSuggestion: (suggestion: Stop) => JSX.Element | string;
+  valueChangeHandler: (value: T) => void;
+  getSuggestions: <T>(subject: Subject<string>) => Observable<T[]>;
+  renderSuggestion: (suggestion: T) => JSX.Element | string;
 };
 
-const AutoComplete = ({
+const AutoComplete = <T extends Stop>({
   style,
   placeholder,
   value,
@@ -20,9 +20,9 @@ const AutoComplete = ({
   valueChangeHandler,
   getSuggestions,
   renderSuggestion,
-}: AutoCompleteProps) => {
+}: AutoCompleteProps<T>) => {
   const [activeOptionIndex, setActiveOptionIndex] = useState(0);
-  const [filteredOptions, setFilteredOptions] = useState<Stop[]>([]);
+  const [filteredOptions, setFilteredOptions] = useState<T[]>([]);
   const [showOptions, setShowOptions] = useState(false);
   const [userInput, setUserInput] = useState(value ? value.name : "");
   const [dataChangeSubject, setDataChangeSubject] = useState(
@@ -30,7 +30,7 @@ const AutoComplete = ({
   );
 
   useEffect(() => {
-    const subscription = getSuggestions<Stop>(dataChangeSubject).subscribe({
+    const subscription = getSuggestions<T>(dataChangeSubject).subscribe({
       next: (locations) => {
         setFilteredOptions(locations);
         setShowOptions(true);

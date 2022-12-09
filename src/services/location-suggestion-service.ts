@@ -1,26 +1,24 @@
-import React, { useEffect, useState } from "react";
 import { Subject, Observable } from "rxjs";
 import { debounceTime, map, switchMap, tap, filter } from "rxjs/operators";
 import { ajax, AjaxResponse } from "rxjs/ajax";
-import { Stop } from "../types";
 import constants from "../constants";
 
 const getApiUrl = (value: string) => {
     return `${constants.api_server}/locations?poi=false&addresses=false&query=${value}`;
 };
 
-const transformResponse = ({ response }: AjaxResponse<any>): Stop[] => {
+const transformResponse = ({ response }: AjaxResponse<any>) => {
     return response.map(
-        (item: { [x: string]: any }): Stop => ({
+        (item: { [x: string]: any }) => ({
             id: item["id"],
             name: item["name"],
         })
     );
 };
 
-export const getSuggestions = <S>(
+export const getSuggestions = <T>(
     subject: Subject<string>
-): Observable<Stop[]> => {
+): Observable<T[]> => {
     return subject.pipe(
         debounceTime(300),
         //tap((s) => console.log(`In Pipe ${s}`)),
