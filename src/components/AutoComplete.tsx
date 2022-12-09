@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Subject } from "rxjs";
-import { debounceTime, map, switchMap, tap, filter } from "rxjs/operators";
-import { ajax, AjaxResponse } from "rxjs/ajax";
+import { Subject, Observable } from "rxjs";
 import { Stop } from "../types";
-import constants from "../constants";
 
 type AutoCompleteProps = {
   style: string;
@@ -11,56 +8,37 @@ type AutoCompleteProps = {
   value: Stop | null;
   name: string;
   valueChangeHandler: (value: Stop) => void;
-};
-
-const getApiUrl = (value: string) => {
-  return `${constants.api_server}/locations?poi=false&addresses=false&query=${value}`;
-};
-
-const transformResponse = ({ response }: AjaxResponse<any>): Stop[] => {
-  return response.map(
-    (item: { [x: string]: any }): Stop => ({
-      id: item["id"],
-      name: item["name"],
-    })
-  );
+  getSuggestions: <S>(subject: Subject<string>) => Observable<Stop[]>;
+  renderSuggestion: (suggestion: Stop) => JSX.Element | string;
 };
 
 const AutoComplete = ({
   style,
   placeholder,
   value,
-  valueChangeHandler,
   name,
+  valueChangeHandler,
+  getSuggestions,
+  renderSuggestion,
 }: AutoCompleteProps) => {
-  
   const [activeOptionIndex, setActiveOptionIndex] = useState(0);
   const [filteredOptions, setFilteredOptions] = useState<Stop[]>([]);
   const [showOptions, setShowOptions] = useState(false);
-  const [userInput, setUserInput] = useState(value ? value.name : '');
+  const [userInput, setUserInput] = useState(value ? value.name : "");
   const [dataChangeSubject, setDataChangeSubject] = useState(
     new Subject<string>()
   );
 
   useEffect(() => {
-    const subscription = dataChangeSubject
-      .pipe(
-        debounceTime(300),
-        //tap((s) => console.log(`In Pipe ${s}`)),
-        filter((s) => s.length > 2),
-        map(getApiUrl),
-        switchMap((url) => ajax(url)),
-        map(transformResponse)
-      )
-      .subscribe(
-        (locations) => {
-          setFilteredOptions(locations);
-          setShowOptions(true);
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
+    const subscription = getSuggestions<Stop>(dataChangeSubject).subscribe({
+      next: (locations) => {
+        setFilteredOptions(locations);
+        setShowOptions(true);
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
 
     return () => {
       subscription.unsubscribe();
@@ -127,9 +105,9 @@ const AutoComplete = ({
               <li
                 className={`bg-gray-50 block my-1 p-2 rounded-sm hover:bg-gray-100 hover:font-bold hover:text-primary-focus hover:cursor-pointer hover:transition-all`}
                 key={option.id}
-                onClick={(e)=> handleSelect(index)}
+                onClick={(e) => handleSelect(index)}
               >
-                {option.name}
+                {renderSuggestion(option)}
               </li>
             );
           })}

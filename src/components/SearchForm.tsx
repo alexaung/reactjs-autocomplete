@@ -8,6 +8,7 @@ import { fetchJourneys } from "../reducers/journeySlice";
 import { useNavigate } from "react-router-dom";
 import { Stop } from "../types";
 import { useState } from "react";
+import { getSuggestions } from "../services/location-suggestion-service";
 
 const schema = Yup.object({
   from: Yup.object().nullable().required('From is required.'),
@@ -39,6 +40,10 @@ export const SearchForm = () => {
     await dispatch(fetchJourneys(criteria));
     setIsSubmitting(false);
     navigate("/journey");
+  };
+
+  const renderSuggestion = (suggestion: Stop) => {
+    return `${suggestion.name}`;
   };
 
   return (
@@ -73,6 +78,8 @@ export const SearchForm = () => {
                 name="from"
                 value={values.from}
                 valueChangeHandler={(from: Stop) => setFieldValue("from", from)}
+                getSuggestions={getSuggestions}
+                renderSuggestion={renderSuggestion}
               />
               <ErrorMessage
                 component="span"
@@ -93,6 +100,8 @@ export const SearchForm = () => {
                 name="to"
                 value={values.to}
                 valueChangeHandler={(to: Stop) => setFieldValue("to", to)}
+                getSuggestions={getSuggestions}
+                renderSuggestion={renderSuggestion}
               />
               <ErrorMessage
                 component="span"
