@@ -1,5 +1,7 @@
 ## Lendis - Software Engineer Assignment
 
+This Github repository contains an AutoComplete component developed using React, Redux Toolkit, TailwindCSS, and API call. The component allows users to easily search and find information related to the public transportation system in Germany. The v5.db.transport.rest API has been utilized to provide up-to-date information and improve the accuracy of the results. The AutoComplete component is highly customizable and can be easily integrated into any project or application. With its modern and efficient design, the component provides a seamless user experience and improves the overall functionality of any transportation-related web application.
+
 This is a [`vitejs`](https://vitejs.dev/) + [Reactjs](https://reactjs.org//) [Typescript] project with [tailwindcss](https://tailwindcss.com/).
 
 ## Getting Started
