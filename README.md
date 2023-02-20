@@ -44,24 +44,11 @@ On the homepage's Search Form, the user can input the name of the city or the st
 
 ## Technologies Stack
 
-[Vite](https://vitejs.dev/guide/) is a front-end tool that prioritizes speed and performance. It includes a development server with advanced features such as fast Hot Module Replacement (HMR), pre-bundling, and support for TypeScript, JSX, and dynamic imports. It also includes a build command that uses Rollup to bundle code and output optimized static assets for production. Vite pre-bundles dependencies using esbuild, which is significantly faster than JavaScript-based bundlers. This optimizes HTTP requests and caching by mapping each dependency to only one HTTP request, reducing network congestion.
+- [Vite](https://vitejs.dev/guide/) is a front-end tool that prioritizes speed and performance. It includes a development server with advanced features such as fast Hot Module Replacement (HMR), pre-bundling, and support for TypeScript, JSX, and dynamic imports. It also includes a build command that uses Rollup to bundle code and output optimized static assets for production. Vite pre-bundles dependencies using esbuild, which is significantly faster than JavaScript-based bundlers. This optimizes HTTP requests and caching by mapping each dependency to only one HTTP request, reducing network congestion.
 
-Redux Toolkit is utilized for centralized management of the application state. It streamlines the process of writing good Redux applications and accelerates development by incorporating recommended best practices, providing default behaviors, detecting mistakes, and enabling the creation of simpler code.
+- [Redux Toolkit](https://redux-toolkit.js.org/) is utilized for centralized management of the application state. It streamlines the process of writing good Redux applications and accelerates development by incorporating recommended best practices, providing default behaviors, detecting mistakes, and enabling the creation of simpler code.
 
-Tailwind CSS, in combination with PostCSS as the preprocessor, simplifies the coding process and enhances maintainability. This utility-first framework eliminates the need to create custom CSS for styling an application, as it provides a set of utility classes to control padding, margin, color, font, shadows, and other properties of an application. This results in more efficient and faster application development.
-
-
-
-
-
-
-[Redux Toolkit](https://redux-toolkit.js.org/) to managing and centralizing application state
-
-- Redux Toolkit makes it easier to write good Redux applications and speeds up development, by baking in our recommended best practices, providing good default behaviors, catching mistakes, and allowing you to write simpler code. 
-
-[Tailwind CSS](https://tailwindcss.com/) with PostCSS as your preprocessor
-
-- Tailwind CSS makes it quicker to write and maintain the code of your application. By using this utility-first framework, you don't have to write custom CSS to style your application. Instead, you can use utility classes to control the padding, margin, color, font, shadow, and more of your application.
+- [Tailwind CSS](https://tailwindcss.com/) , in combination with PostCSS as the preprocessor, simplifies the coding process and enhances maintainability. This utility-first framework eliminates the need to create custom CSS for styling an application, as it provides a set of utility classes to control padding, margin, color, font, shadows, and other properties of an application. This results in more efficient and faster application development.
 
 ## Deploy on Firebase Hosting
 
