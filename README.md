@@ -50,25 +50,31 @@ On the homepage's Search Form, the user can input the name of the city or the st
 
 - [Tailwind CSS](https://tailwindcss.com/) , in combination with PostCSS as the preprocessor, simplifies the coding process and enhances maintainability. This utility-first framework eliminates the need to create custom CSS for styling an application, as it provides a set of utility classes to control padding, margin, color, font, shadows, and other properties of an application. This results in more efficient and faster application development.
 
-## Deploy on Firebase Hosting
+## To deploy the project, follow these steps for Firebase Hosting:
 
-- Create a new project with the name at [Firebase Hosting](https://console.firebase.google.com/). Okay, now that we have the project created.
-- In the Firebase dashboard click on Hosting and follow the on screen instruction.
-- Go to project root folder
-- npm install -g firebase-tools
-- firebase login
-- firebase init
-- Hosting: Configure files for Firebase Hosting and (optionally) set up Guithub Action deploys
-- Use an existing project and choose your projectId that you created at above. 
-- Now you build and deploy on firebase 
+- Create a new project with a desired name on Firebase Hosting.
+
+- Once the project is created, navigate to the Firebase dashboard and click on Hosting. Follow the on-screen instructions.
+
+- Go to the root folder of the project and install firebase-tools globally using npm.
+
+- Login to Firebase using the command "firebase login".
+
+- Initialize Firebase using the command "firebase init".
+
+- In the Firebase initialization, select "Hosting" and configure files for Firebase Hosting. Optionally, set up GitHub Action deploys.
+
+- Choose the existing project and select the projectId you created in the previous step.
+
+- Now, build and deploy your project on Firebase Hosting.
 
 ## CI/CD
 
-[CircleCI](https://circleci.com/) integrates seamlessly with [Bitbucket](https://alexaung@bitbucket.org/alexaung/lendis.git) to make your development workflow more efficient. 
+The integration of [CircleCI](https://circleci.com/) with [Bitbucket](https://github.com/alexaung/reactjs-autocomplete) facilitates a more efficient development workflow for the project.
 
-You can configure the integration file, [.circleci/config.yml](https://circleci.com/docs/configuration-reference/) in the project root folder. 
+To configure the integration, navigate to the project root folder and modify the integration file, [.circleci/config.yml](https://circleci.com/docs/configuration-reference/).
 
-Everytime you commit, CircleCI automatically builds the project and deploy the latest version to Firebase Hosting.
+After every commit, CircleCI will automatically build the project and deploy the latest version to Firebase Hosting, streamlining the development process.
 
 ## Disclaimer
 
