@@ -24,17 +24,17 @@ yarn dev
 
 Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
 
-The user is able to specify the name of the city, or the station she wants to start her journey on, along with the day and time in the Search Form at home page and the search results of journeys with all available modes of transportation will shown at the journey page.
+On the homepage's Search Form, the user can input the name of the city or the station from which they wish to begin their journey, as well as the desired day and time. Upon submitting the form, the journey page will display all available modes of transportation and their corresponding schedules.
 
 ## Reusable Components
 
 ### AutoComplete Componet
 
-- Autocomplete provides a superior user experience to your app’s visitors. It also helps to avoid redundant spelling errors while searching.
+- By implementing Autocomplete, your application can offer a more advanced and enjoyable user experience, while also reducing the likelihood of spelling errors during searches.
 
-- Autocomplete is essencially a text input that offers suggestions that user can pick from and to of Station /stop /address.
+- Autocomplete is a text input feature that presents users with a range of suggested options to choose from when entering station, stop, or address information.
 
-- Used RxJS debounce operator to 300 milliseconds delay calls to the search method. And to ensure a minimum input 3 letter length with rxjs filter. This can be easily changed in the AutoCompete component.
+- To optimize the performance of the Autocomplete feature, the RxJS debounce operator was used to delay search method calls by 300 milliseconds. Additionally, an RxJS filter was implemented to ensure that a minimum of three letters are inputted. The Autocomplete component allows for easy modification of these settings.
 
 ## API routes
 
@@ -44,13 +44,16 @@ The user is able to specify the name of the city, or the station she wants to st
 
 ## Technologies Stack
 
-[Vite](https://vitejs.dev/guide/) is a next-generation, front-end tool that focuses on speed and performace.
+[Vite](https://vitejs.dev/guide/) is a front-end tool that prioritizes speed and performance. It includes a development server with advanced features such as fast Hot Module Replacement (HMR), pre-bundling, and support for TypeScript, JSX, and dynamic imports. It also includes a build command that uses Rollup to bundle code and output optimized static assets for production. Vite pre-bundles dependencies using esbuild, which is significantly faster than JavaScript-based bundlers. This optimizes HTTP requests and caching by mapping each dependency to only one HTTP request, reducing network congestion.
 
-- A development server that provides rich feature enhancements over native ES moudles: fast Hot Moudle Replacement (HMR), pre-bundling, support for typescript, jsx, and dynamic import.
+Redux Toolkit is utilized for centralized management of the application state. It streamlines the process of writing good Redux applications and accelerates development by incorporating recommended best practices, providing default behaviors, detecting mistakes, and enabling the creation of simpler code.
 
-- A build command that bundles your code with Rollup, pre-configured to output optimized static assets for production.
+Tailwind CSS, in combination with PostCSS as the preprocessor, simplifies the coding process and enhances maintainability. This utility-first framework eliminates the need to create custom CSS for styling an application, as it provides a set of utility classes to control padding, margin, color, font, shadows, and other properties of an application. This results in more efficient and faster application development.
 
-- Vite pre-bundles these dependencies using esbuild, which is 10-100x faster than JavaScript-based bundlers. Pre-bundling ensures that each     dependency maps to only one HTTP request, avoiding HTTP overhead and network congestion. As dependencies do not change, they can also be cached and we can skip pre-bundling
+
+
+
+
 
 [Redux Toolkit](https://redux-toolkit.js.org/) to managing and centralizing application state
 
